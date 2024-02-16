@@ -1,0 +1,409 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Revit.Async</name>
+    </assembly>
+    <members>
+        <member name="P:Revit.Async.Entities.FutureExternalEvent.FutureExternalEventCreator">
+            <summary>
+                Use to create any other external events
+            </summary>
+        </member>
+        <member name="M:Revit.Async.Entities.FutureExternalEvent.CreateExternalEvent(Autodesk.Revit.UI.IExternalEventHandler)">
+            <summary>
+                Create a new <see cref="T:ExternalEvent" /> for an <see cref="T:IExternalEventHandler" /> instance
+            </summary>
+            <param name="handler">The <see cref="T:IExternalEventHandler" /> instance</param>
+            <returns>The <see cref="T:ExternalEvent" /> created</returns>
+        </member>
+        <member name="T:Revit.Async.Extensions.ExternalEventResultHandlerExtensions">
+            <summary>
+                Extensions for <see cref="T:Revit.Async.Interfaces.IExternalEventResultHandler`1"/>
+            </summary>
+        </member>
+        <member name="M:Revit.Async.Extensions.ExternalEventResultHandlerExtensions.Await``2(Revit.Async.Interfaces.IExternalEventResultHandler{``1},System.Threading.Tasks.Task{``0},System.Action{``0,Revit.Async.Interfaces.IExternalEventResultHandler{``1}})">
+            <summary>
+                Await a <see cref="T:System.Threading.Tasks.Task`1"/>
+            </summary>
+            <typeparam name="TSource">The type of the task result to wait</typeparam>
+            <typeparam name="TResult">The type of the result to generate</typeparam>
+            <param name="resultHandler">The instance of handler to handle the result</param>
+            <param name="source">The task to wait</param>
+            <param name="onComplete">Callback to invoke when the task is completed</param>
+            <returns>The handler itself</returns>
+        </member>
+        <member name="M:Revit.Async.Extensions.ExternalEventResultHandlerExtensions.Await``2(Revit.Async.Interfaces.IExternalEventResultHandler{``1},System.Threading.Tasks.Task{``0},System.Action{``0})">
+            <summary>
+                Await a <see cref="T:System.Threading.Tasks.Task`1"/>
+            </summary>
+            <typeparam name="TSource">The type of the task result to wait</typeparam>
+            <typeparam name="TResult">The type of the result to generate</typeparam>
+            <param name="resultHandler">The instance of handler to handle the result</param>
+            <param name="source">The task to wait</param>
+            <param name="onComplete">Callback to invoke when the task is completed</param>
+            <returns></returns>
+        </member>
+        <member name="M:Revit.Async.Extensions.ExternalEventResultHandlerExtensions.Await``1(Revit.Async.Interfaces.IExternalEventResultHandler{``0},System.Threading.Tasks.Task{``0})">
+            <summary>
+                Await a <see cref="T:System.Threading.Tasks.Task`1"/>
+            </summary>
+            <typeparam name="TResult"></typeparam>
+            <param name="resultHandler"></param>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Revit.Async.Extensions.ExternalEventResultHandlerExtensions.Wait``1(Revit.Async.Interfaces.IExternalEventResultHandler{``0},System.Func{``0})">
+            <summary>
+                Wait for an sync delegate to complete
+            </summary>
+            <typeparam name="TResult"></typeparam>
+            <param name="resultHandler"></param>
+            <param name="function"></param>
+        </member>
+        <member name="T:Revit.Async.ExternalEvents.AsyncGenericExternalEventHandler`2">
+            <summary>
+                Generic external event handler to execute async code
+            </summary>
+            <typeparam name="TParameter">The type of the parameter</typeparam>
+            <typeparam name="TResult">The type of the result</typeparam>
+        </member>
+        <member name="M:Revit.Async.ExternalEvents.AsyncGenericExternalEventHandler`2.Execute(Autodesk.Revit.UI.UIApplication,`0,Revit.Async.Interfaces.IExternalEventResultHandler{`1})">
+            <inheritdoc />
+        </member>
+        <member name="M:Revit.Async.ExternalEvents.AsyncGenericExternalEventHandler`2.Handle(Autodesk.Revit.UI.UIApplication,`0)">
+            <summary>
+                Override this method to execute async business code
+            </summary>
+            <param name="app">The Revit top-level object, <see cref="T:Autodesk.Revit.UI.UIApplication"/></param>
+            <param name="parameter">The parameter</param>
+            <returns>The result</returns>
+        </member>
+        <member name="T:Revit.Async.ExternalEvents.SyncGenericExternalEventHandler`2">
+            <summary>
+                Generic external event handler to execute sync code
+            </summary>
+            <typeparam name="TParameter">The type of the parameter</typeparam>
+            <typeparam name="TResult">The type of the result</typeparam>
+        </member>
+        <member name="M:Revit.Async.ExternalEvents.SyncGenericExternalEventHandler`2.Execute(Autodesk.Revit.UI.UIApplication,`0,Revit.Async.Interfaces.IExternalEventResultHandler{`1})">
+            <inheritdoc />
+        </member>
+        <member name="M:Revit.Async.ExternalEvents.SyncGenericExternalEventHandler`2.Handle(Autodesk.Revit.UI.UIApplication,`0)">
+            <summary>
+                Override this method to execute sync business code
+            </summary>
+            <param name="app">The Revit top-level object, <see cref="T:Autodesk.Revit.UI.UIApplication" /></param>
+            <param name="parameter">The parameter</param>
+            <returns>The result</returns>
+        </member>
+        <member name="T:Revit.Async.ExternalEvents.GenericExternalEventHandler`2">
+            <inheritdoc />
+        </member>
+        <member name="M:Revit.Async.ExternalEvents.GenericExternalEventHandler`2.Execute(Autodesk.Revit.UI.UIApplication)">
+            <inheritdoc />
+        </member>
+        <member name="M:Revit.Async.ExternalEvents.GenericExternalEventHandler`2.GetName">
+            <inheritdoc />
+        </member>
+        <member name="M:Revit.Async.ExternalEvents.GenericExternalEventHandler`2.Prepare(`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:Revit.Async.ExternalEvents.GenericExternalEventHandler`2.Execute(Autodesk.Revit.UI.UIApplication,`0,Revit.Async.Interfaces.IExternalEventResultHandler{`1})">
+            <summary>
+                Override this method to execute some business code
+            </summary>
+            <param name="app">The revit top-level object, <see cref="T:Autodesk.Revit.UI.UIApplication" /></param>
+            <param name="parameter">The parameter passed in</param>
+            <param name="resultHandler">The result handler</param>
+        </member>
+        <member name="T:Revit.Async.ExternalEvents.SyncDelegateExternalEventHandler`1">
+            <summary>
+                An external event handler to run synchronized logic
+                Accept a delegate as parameter
+            </summary>
+            <typeparam name="TResult">The type of result to be generated</typeparam>
+        </member>
+        <member name="T:Revit.Async.ExternalEvents.AsyncDelegateExternalEventHandler`1">
+            <summary>
+                An external event handler to run asynchronous logic
+                Accept a delegate as parameter
+            </summary>
+            <typeparam name="TResult">The type of result to be generated</typeparam>
+        </member>
+        <member name="T:Revit.Async.Interfaces.ICloneableExternalEventHandler">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Revit.Async.Interfaces.IExternalEventResultHandler`1">
+            <summary>
+                Interface to handle the external event result
+            </summary>
+            <typeparam name="TResult">The type of the result</typeparam>
+        </member>
+        <member name="M:Revit.Async.Interfaces.IExternalEventResultHandler`1.Cancel">
+            <summary>
+                Cancel the task
+            </summary>
+        </member>
+        <member name="M:Revit.Async.Interfaces.IExternalEventResultHandler`1.SetResult(`0)">
+            <summary>
+                Set some the result when the handler is done
+            </summary>
+            <param name="result">The result object</param>
+        </member>
+        <member name="M:Revit.Async.Interfaces.IExternalEventResultHandler`1.ThrowException(System.Exception)">
+            <summary>
+                Set an <see cref="T:System.Exception" /> to the task
+            </summary>
+            <param name="exception">The <see cref="T:System.Exception" /> object</param>
+        </member>
+        <member name="T:Revit.Async.Interfaces.IRevitTask">
+            <summary>
+                Represent a scoped RevitTask to enable registering and consuming of
+                <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" />
+            </summary>
+        </member>
+        <member name="M:Revit.Async.Interfaces.IRevitTask.Raise``3(``1)">
+            <summary>
+                Raise an <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" /> from current scope and get
+                the result
+            </summary>
+            <typeparam name="THandler">The type of the <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" /></typeparam>
+            <typeparam name="TParameter">
+                The type of the parameter that
+                <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" /> accepts
+            </typeparam>
+            <typeparam name="TResult">
+                The type of result that <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" />
+                generates
+            </typeparam>
+            <param name="parameter">
+                The parameter passed to the <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" />
+            </param>
+            <returns>The result generated by <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" /></returns>
+        </member>
+        <member name="M:Revit.Async.Interfaces.IRevitTask.RaiseNew``3(``1)">
+            <summary>
+                Raise an <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" /> from current scope and get
+                the result, which allows user to raise multiple ExternalEvents of the same type at a time
+            </summary>
+            <typeparam name="THandler">The type of the <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" /></typeparam>
+            <typeparam name="TParameter">
+                The type of the parameter that
+                <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" /> accepts
+            </typeparam>
+            <typeparam name="TResult">
+                The type of result that <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" />
+                generates
+            </typeparam>
+            <param name="parameter">
+                The parameter passed to the <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" />
+            </param>
+            <returns>The result generated by <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" /></returns>
+        </member>
+        <member name="M:Revit.Async.Interfaces.IRevitTask.Register``2(Revit.Async.Interfaces.IGenericExternalEventHandler{``0,``1})">
+            <summary>
+                Register an <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" /> to current scope to be
+                raised
+            </summary>
+            <typeparam name="TParameter">
+                The type of the parameter that
+                <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" /> accepts
+            </typeparam>
+            <typeparam name="TResult">
+                The type of result that <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" />
+                generates
+            </typeparam>
+            <param name="handler">The instance of <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" /></param>
+        </member>
+        <member name="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2">
+            <summary>
+                An interface to enhance <see cref="T:IExternalEventHandler"/> to support passing argument and returning result
+            </summary>
+            <typeparam name="TParameter"></typeparam>
+            <typeparam name="TResult"></typeparam>
+        </member>
+        <member name="M:Revit.Async.Interfaces.IGenericExternalEventHandler`2.Prepare(`0)">
+            <summary>
+                Send an execution parameter to the handler and get a task to receive the result
+            </summary>
+            <param name="parameter">The parameter used by the handler</param>
+            <returns>A task to get the result in case the handler finishes its work</returns>
+        </member>
+        <member name="T:Revit.Async.Utils.AsyncLocker">
+            <summary>
+                A locker to ensure that only one thread can access the resource at one time using <see cref="T:System.Threading.SemaphoreSlim" />
+            </summary>
+        </member>
+        <member name="M:Revit.Async.Utils.AsyncLocker.LockAsync">
+            <summary>
+                Create an <see cref="T:Revit.Async.Utils.UnlockKey" /> to unlock the <see cref="T:Revit.Async.Utils.AsyncLocker" />
+            </summary>
+            <returns>The instance of <see cref="T:Revit.Async.Utils.UnlockKey" /> used to unlock <see cref="T:Revit.Async.Utils.AsyncLocker" /></returns>
+        </member>
+        <member name="T:Revit.Async.Utils.UnlockKey">
+            <summary>
+                Automatically release the lock on disposed
+            </summary>
+        </member>
+        <member name="T:Revit.Async.RevitTask">
+            <summary>
+                Provide some useful methods to support running Revit API code from any context
+            </summary>
+        </member>
+        <member name="P:Revit.Async.RevitTask.RegisteredExternalEvents">
+            <summary>
+                Store the external events registered globally
+            </summary>
+        </member>
+        <member name="P:Revit.Async.RevitTask.ScopedRegisteredExternalEvents">
+            <summary>
+                Store the external events registered in current scope
+            </summary>
+        </member>
+        <member name="M:Revit.Async.RevitTask.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Revit.Async.RevitTask.Raise``3(``1)">
+            <inheritdoc />
+        </member>
+        <member name="M:Revit.Async.RevitTask.Register``2(Revit.Async.Interfaces.IGenericExternalEventHandler{``0,``1})">
+            <inheritdoc />
+        </member>
+        <member name="M:Revit.Async.RevitTask.Initialize(Autodesk.Revit.UI.UIControlledApplication)">
+            <summary>
+                Always call this method ahead of time in Revit API context to make sure that <see cref="T:Revit.Async.RevitTask" /> functions
+                properly
+            </summary>
+        </member>
+        <member name="M:Revit.Async.RevitTask.Initialize(Autodesk.Revit.UI.UIApplication)">
+            <summary>
+                Always call this method ahead of time in Revit API context to make sure that <see cref="T:Revit.Async.RevitTask" /> functions
+                properly
+            </summary>
+        </member>
+        <member name="M:Revit.Async.RevitTask.RaiseGlobal``3(``1)">
+            <summary>
+                Raise an <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" /> and get the result.
+                If a the handler is not registered globally, find the RevitTask instance to raise it
+            </summary>
+            <typeparam name="THandler">The type of the <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" /></typeparam>
+            <typeparam name="TParameter">
+                The type of the parameter that
+                <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" /> accepts
+            </typeparam>
+            <typeparam name="TResult">
+                The type of result that <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" />
+                generates
+            </typeparam>
+            <param name="parameter">
+                The parameter passed to the <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" />
+            </param>
+            <returns>The result generated by <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" /></returns>
+        </member>
+        <member name="M:Revit.Async.RevitTask.RaiseGlobalNew``3(``1)">
+            <summary>
+                Raise an <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" /> and get the result.
+                If a the handler is not registered globally, find the RevitTask instance to raise it
+            </summary>
+            <typeparam name="THandler">The type of the <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" /></typeparam>
+            <typeparam name="TParameter">
+                The type of the parameter that
+                <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" /> accepts
+            </typeparam>
+            <typeparam name="TResult">
+                The type of result that <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" />
+                generates
+            </typeparam>
+            <param name="parameter">
+                The parameter passed to the <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" />
+            </param>
+            <returns>The result generated by <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" /></returns>
+        </member>
+        <member name="M:Revit.Async.RevitTask.RegisterGlobal``2(Revit.Async.Interfaces.IGenericExternalEventHandler{``0,``1})">
+            <summary>
+                Register an <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" /> to globally to be
+                raised. If a global handler is not what you want, make use of a RevitTask instance to register a scoped handler
+            </summary>
+            <typeparam name="TParameter">
+                The type of the parameter that
+                <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" /> accepts
+            </typeparam>
+            <typeparam name="TResult">
+                The type of result that <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" />
+                generates
+            </typeparam>
+            <param name="handler">The instance of <see cref="T:Revit.Async.Interfaces.IGenericExternalEventHandler`2" /></param>
+        </member>
+        <member name="M:Revit.Async.RevitTask.RunAsync``1(System.Func{``0})">
+            <summary>
+                Running Revit API code and get the result asynchronously
+            </summary>
+            <typeparam name="TResult">The type of the Result</typeparam>
+            <param name="function">The delegate method wraps all the Revit API code with no argument</param>
+            <returns></returns>
+        </member>
+        <member name="M:Revit.Async.RevitTask.RunAsync``1(System.Func{Autodesk.Revit.UI.UIApplication,``0})">
+            <summary>
+                Running Revit API code and get the result asynchronously
+            </summary>
+            <typeparam name="TResult">The type of the Result</typeparam>
+            <param name="function">The delegate method wraps all the Revit API code with <see cref="T:Autodesk.Revit.UI.UIApplication" /> as argument</param>
+            <returns>The result</returns>
+        </member>
+        <member name="M:Revit.Async.RevitTask.RunAsync``1(System.Func{System.Threading.Tasks.Task{``0}})">
+            <summary>
+                Running Revit API code and get the result asynchronously
+            </summary>
+            <typeparam name="TResult">The type of the Result</typeparam>
+            <param name="function">
+                The delegate method wraps all the Revit API code and some other asynchronous processes with no
+                argument
+            </param>
+            <returns>The result</returns>
+        </member>
+        <member name="M:Revit.Async.RevitTask.RunAsync``1(System.Func{Autodesk.Revit.UI.UIApplication,System.Threading.Tasks.Task{``0}})">
+            <summary>
+                Running Revit API code and get the result asynchronously
+            </summary>
+            <typeparam name="TResult">The type of the Result</typeparam>
+            <param name="function">
+                The delegate method wraps all the Revit API code and some other asynchronous processes with
+                <see cref="T:Autodesk.Revit.UI.UIApplication" /> as argument
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:Revit.Async.RevitTask.RunAsync(System.Action)">
+            <summary>
+                Running Revit API code asynchronously
+            </summary>
+            <param name="action">The delegate method wraps all the Revit API code</param>
+            <returns>The task indicating whether the execution has completed</returns>
+        </member>
+        <member name="M:Revit.Async.RevitTask.RunAsync(System.Action{Autodesk.Revit.UI.UIApplication})">
+            <summary>
+                Running Revit API code asynchronously
+            </summary>
+            <param name="action">The delegate method wraps all the Revit API code with <see cref="T:Autodesk.Revit.UI.UIApplication" /> as argument</param>
+            <returns>The task indicating whether the execution has completed</returns>
+        </member>
+        <member name="M:Revit.Async.RevitTask.RunAsync(System.Func{System.Threading.Tasks.Task})">
+            <summary>
+                Running Revit API code asynchronously
+            </summary>
+            <param name="function">The delegate method wraps all the Revit API code and some other asynchronous processes</param>
+            <returns>The task indicating whether the execution has completed</returns>
+        </member>
+        <member name="M:Revit.Async.RevitTask.RunAsync(System.Func{Autodesk.Revit.UI.UIApplication,System.Threading.Tasks.Task})">
+            <summary>
+                Running Revit API code asynchronously
+            </summary>
+            <param name="function">
+                The delegate method wraps all the Revit API code and some other asynchronous processes with
+                <see cref="T:Autodesk.Revit.UI.UIApplication" /> as argument
+            </param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

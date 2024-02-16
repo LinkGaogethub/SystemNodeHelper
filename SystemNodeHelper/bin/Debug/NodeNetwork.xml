@@ -1,0 +1,958 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NodeNetwork</name>
+    </assembly>
+    <members>
+        <member name="T:NodeNetwork.NNViewRegistrar">
+            <summary>
+            A locator is used to find the correct view corresponding to a viewmodel.
+            In ReactiveUI, usually Splat is used, but others exist. This class acts as an intermediate registrar.
+            It gathers registrations and registers them to the preferred locator.
+            </summary>
+        </member>
+        <member name="M:NodeNetwork.NNViewRegistrar.RegisterSplat">
+            <summary>
+            Register all NodeNetwork view/viewmodel pairs to Locator.CurrentMutable.
+            </summary>
+        </member>
+        <member name="T:NodeNetwork.Utilities.LongestCommonSubsequence.ChangeType">
+            <summary>
+            The type of change that occured.
+            </summary>
+        </member>
+        <member name="M:NodeNetwork.Utilities.LongestCommonSubsequence.GetChanges``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0})">
+            <summary>
+            Returns the changes to be made to oldList to reach the state of newList.
+            First all items that are in oldList but not in the LCS of oldList and newList are removed.
+            The list is then identical to the LCS of oldList and newList.
+            Then all items that are in newList but not in the LCS of oldList and newList are added.
+            The list is then identical to newList.
+            </summary>
+            <typeparam name="T">The type of items contained in the two lists</typeparam>
+            <param name="oldList">The first list</param>
+            <param name="newList">The second list</param>
+            <returns></returns>
+        </member>
+        <member name="M:NodeNetwork.Utilities.LongestCommonSubsequence.Calculate``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0})">
+            <summary>
+            Returns the longest common subsequence of two lists
+            For example: the LCS of 'computer' and 'houseboat' is 'out'
+            </summary>
+            <typeparam name="T">The type of items contained in the two lists</typeparam>
+            <param name="seq1">The first list</param>
+            <param name="seq2">The second list</param>
+            <returns>An enumerable of items that are both in seq1 and seq2 and which follows the consecutive order of both lists</returns>
+        </member>
+        <member name="M:NodeNetwork.Utilities.ReactiveExtensions.ThrottleWhen``1(System.IObservable{``0},System.IObservable{System.Boolean})">
+            <summary>
+            Pass through values if and only if the last value produced by 'throttleCondition' is false.
+            When 'throttleCondition' is false, no values are passed through.
+            When 'throttleCondition' changes from true to false, if one or more values was blocked during the period
+            in which the throttle was active, the latest value will be passed through.
+            </summary>
+            <typeparam name="T">The datatype in the observable</typeparam>
+            <param name="self">The source observable</param>
+            <param name="throttleCondition">An observable of booleans that determines the current throttle state</param>
+            <returns>The new observable</returns>
+        </member>
+        <member name="M:NodeNetwork.Utilities.ReactiveExtensions.BindList``4(``0,``1,System.Linq.Expressions.Expression{System.Func{``1,DynamicData.IObservableList{``2}}},System.Linq.Expressions.Expression{System.Func{``0,``3}})">
+            <summary>
+            Create a one way list binding from the viewmodel to the view.
+            The view list property will be automatically updated to reflect
+            the viewmodel source list property.
+            </summary>
+            <typeparam name="TView">The type of the view</typeparam>
+            <typeparam name="TViewModel">The type of the viewmodel</typeparam>
+            <typeparam name="TData">The type of the data stored in the list</typeparam>
+            <typeparam name="TProperty">The type of the target property in the view</typeparam>
+            <param name="self">The view used for the binding</param>
+            <param name="vmDummy">A dummy viewmodel parameter, used to infer the viewmodel type</param>
+            <param name="vmProperty">The source property in the viewmodel that contains the list</param>
+            <param name="viewProperty">The target property in the view to bind the list to.</param>
+            <returns>An object that when disposed, disconnects the binding.</returns>
+        </member>
+        <member name="M:NodeNetwork.Utilities.ReactiveExtensions.PairWithPreviousValue``1(System.IObservable{``0})">
+            <summary>
+            Takes an observable of T values and returns an observable of tuples of T values containing the latest value and the previous value.
+            The first item in the source observable produces a tuple with the previous value set to default(T).
+            </summary>
+            <typeparam name="T">The type of object in the observable</typeparam>
+            <param name="obs">The source observable</param>
+            <returns>The resulting observable</returns>
+        </member>
+        <member name="T:NodeNetwork.Views.Controls.ArrowToggleButton">
+            <summary>
+            ArrowToggleButton
+            </summary>
+        </member>
+        <member name="M:NodeNetwork.Views.Controls.ArrowToggleButton.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.Views.Controls.DragCanvas.DragOffset">
+            <summary>
+            Gets or sets the current canvas drag offset.
+            </summary>
+        </member>
+        <member name="T:NodeNetwork.Views.Controls.DragCanvas.DragStartEventHandler">
+            <summary>
+            Triggered when the user clicks and moves the canvas, starting a drag
+            </summary>
+            <param name="sender">The dragcanvas that triggered this event</param>
+            <param name="args">The mouseevent that triggered this event</param>
+        </member>
+        <member name="T:NodeNetwork.Views.Controls.DragCanvas.DragMoveEventHandler">
+            <summary>
+            Triggered when the user drags the canvas
+            </summary>
+            <param name="sender">The dragcanvas that triggered this event</param>
+            <param name="args">Contains the distance traveled since the last drag move or drag start event</param>
+        </member>
+        <member name="T:NodeNetwork.Views.Controls.DragCanvas.DragEndEventHandler">
+            <summary>
+            Triggered when the user releases the mouse and the drag stops.
+            </summary>
+            <param name="sender">The dragcanvas that triggered this event</param>
+            <param name="args">Contains the total distance traveled</param>
+        </member>
+        <member name="P:NodeNetwork.Views.Controls.DragCanvas.StartDragGesture">
+            <summary>
+            This mouse gesture starts a drag on the canvas. Left click by default.
+            </summary>
+        </member>
+        <member name="F:NodeNetwork.Views.Controls.DragCanvas._userClickedThisElement">
+            <summary>
+            Used when the mousebutton is down to check if the initial click was in this element.
+            This is useful because we dont want to assume a drag operation when the user moves the mouse but originally clicked a different element
+            </summary>
+        </member>
+        <member name="F:NodeNetwork.Views.Controls.DragCanvas._dragActive">
+            <summary>
+            Is a drag operation currently in progress?
+            </summary>
+        </member>
+        <member name="F:NodeNetwork.Views.Controls.DragCanvas._originScreenCoordPosition">
+            <summary>
+            The position of the mouse (screen co-ordinate) where the mouse was clicked down.
+            </summary>
+        </member>
+        <member name="F:NodeNetwork.Views.Controls.DragCanvas._previousMouseScreenPos">
+            <summary> 
+            The position of the mouse (screen co-ordinate) when the previous DragDelta event was fired 
+            </summary>
+        </member>
+        <member name="M:NodeNetwork.Views.Controls.DragCanvas.OnMouseDown(System.Windows.Input.MouseButtonEventArgs)">
+            <summary> 
+            This event puts the control into a state where it is ready for a drag operation.
+            </summary>
+        </member>
+        <member name="M:NodeNetwork.Views.Controls.DragCanvas.OnMouseMove(System.Windows.Input.MouseEventArgs)">
+            <summary> 
+            Trigger a dragging event when the user moves the mouse while the left mouse button is pressed
+            </summary>
+        </member>
+        <member name="M:NodeNetwork.Views.Controls.DragCanvas.OnMouseUp(System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Stop dragging when the user releases the mouse button
+            </summary>
+        </member>
+        <member name="M:NodeNetwork.Views.Controls.DragCanvas.SetViewport(System.Windows.Rect)">
+            <summary>
+            Centers the canvas and sets the minimum zoom factor for the specified viewport.
+            </summary>
+            <param name="viewport">The desired viewport.</param>
+        </member>
+        <member name="T:NodeNetwork.Views.Controls.FillPanel">
+            <summary>
+            Simple panel that stretches its children to fill the panel.
+            </summary>
+        </member>
+        <member name="T:NodeNetwork.Views.Controls.ViewModelViewHostNoAnimations">
+            <summary>
+            ViewModelViewHostNoAnimations
+            </summary>
+        </member>
+        <member name="M:NodeNetwork.Views.Controls.ViewModelViewHostNoAnimations.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:NodeNetwork.Views.NetworkView">
+            <summary>
+            NetworkView
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.Views.NetworkView.NetworkViewportRegion">
+            <summary>
+            The rectangle to use as a clipping mask for contentContainer
+            </summary>
+        </member>
+        <member name="E:NodeNetwork.Views.NetworkView.NodeMoveStart">
+            <summary>Occurs when a (set of) node(s) is selected and starts moving.</summary>
+        </member>
+        <member name="E:NodeNetwork.Views.NetworkView.NodeMove">
+            <summary>Occurs one or more times as the mouse changes position when a (set of) node(s) is selected and has mouse capture.</summary>
+        </member>
+        <member name="E:NodeNetwork.Views.NetworkView.NodeMoveEnd">
+            <summary>Occurs when a (set of) node(s) loses mouse capture.</summary>
+        </member>
+        <member name="P:NodeNetwork.Views.NetworkView.CanvasOriginElement">
+            <summary>
+            The element that is used as an origin for the position of the elements of the network.
+            </summary>
+            <example>
+            Can be used for calculating the mouse position relative to the network.
+            <code>
+            Mouse.GetPosition(network.CanvasOriginElement)
+            </code>
+            </example>
+        </member>
+        <member name="P:NodeNetwork.Views.NetworkView.StartCutGesture">
+            <summary>
+            This mouse gesture starts a cut, making the cutline visible. Right click by default.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.Views.NetworkView.StartSelectionRectangleGesture">
+            <summary>
+            This mouse gesture starts a selection, making the selection rectangle visible. Left click + Shift by default.
+            </summary>
+        </member>
+        <member name="M:NodeNetwork.Views.NetworkView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:NodeNetwork.ValidationResult">
+            <summary>
+            A class that represents a generic validation result.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ValidationResult.IsValid">
+            <summary>
+            True if the subject is valid
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ValidationResult.MessageViewModel">
+            <summary>
+            A viewmodel of the message that is to be displayed explaining this validation result.
+            </summary>
+        </member>
+        <member name="T:NodeNetwork.NetworkValidationResult">
+            <summary>
+            A validation of the node network.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.NetworkValidationResult.NetworkIsTraversable">
+            <summary>
+            If false, the network is in a state where trying to parse it (by walking from node to node) can cause problems.
+            For example, this property is false if the network contains loops since parsing it could then result in infinite loops.
+            </summary>
+        </member>
+        <member name="T:NodeNetwork.ConnectionValidationResult">
+            <summary>
+            A validation of a connection between nodes.
+            </summary>
+        </member>
+        <member name="T:NodeNetwork.ViewModels.ConnectionViewModel">
+            <summary>
+            Represents a connection between a node input and a node output
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.ConnectionViewModel.Parent">
+            <summary>
+            The network that contains this connection
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.ConnectionViewModel.Input">
+            <summary>
+            The viewmodel of the node input that is on one end of the connection.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.ConnectionViewModel.Output">
+            <summary>
+            The viewmodel of the node output that is on one end of the connection.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.ConnectionViewModel.CanBeRemovedByUser">
+            <summary>
+            If false, the user cannot delete this connection. True by default.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.ConnectionViewModel.IsHighlighted">
+            <summary>
+            If true, the connection is highlighted.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.ConnectionViewModel.IsInErrorState">
+            <summary>
+            If true, the connection is displayed as being in an erroneous state.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.ConnectionViewModel.IsMarkedForDelete">
+            <summary>
+            If true, the connection is displayed as being marked for deletion.
+            </summary>
+        </member>
+        <member name="T:NodeNetwork.ViewModels.CutLineViewModel">
+            <summary>
+            Viewmodel class for the UI cutting line that is used to delete connections.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.CutLineViewModel.StartPoint">
+            <summary>
+            The coordinates of the point at which the cutting line starts.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.CutLineViewModel.EndPoint">
+            <summary>
+            The coordinates of the point at which the cutting line ends.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.CutLineViewModel.IsVisible">
+            <summary>
+            If true, the cutting line is visible. If false, the cutting line is hidden.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.CutLineViewModel.IntersectingConnections">
+            <summary>
+            A list of connections that visually intersect with the cutting line.
+            This list is driven by the view.
+            </summary>
+        </member>
+        <member name="T:NodeNetwork.ViewModels.PortPosition">
+            <summary>
+            Enum type that indicates the position of the port in the endpoint
+            </summary>
+        </member>
+        <member name="T:NodeNetwork.ViewModels.EndpointVisibility">
+            <summary>
+            Enum types that indicates the visibility behaviour of an endpoint
+            </summary>
+        </member>
+        <member name="F:NodeNetwork.ViewModels.EndpointVisibility.Auto">
+            <summary>
+            Automatically decide whether or not to show this endpoint based on the collapse status of the node
+            </summary>
+        </member>
+        <member name="F:NodeNetwork.ViewModels.EndpointVisibility.AlwaysVisible">
+            <summary>
+            Always show this endpoint, even if the node is collapsed
+            </summary>
+        </member>
+        <member name="F:NodeNetwork.ViewModels.EndpointVisibility.AlwaysHidden">
+            <summary>
+            Always hide this endpoint
+            </summary>
+        </member>
+        <member name="T:NodeNetwork.ViewModels.Endpoint">
+            <summary>
+            Parent interface for the inputs/outputs of nodes between which connections can be made.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.Endpoint.Parent">
+            <summary>
+            The node that owns this endpoint
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.Endpoint.Name">
+            <summary>
+            The name of this endpoint.
+            In the default view, this string is displayed in the node next to the port.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.Endpoint.Group">
+            <summary>
+            The group the end point belongs to. Can be null.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.Endpoint.Icon">
+            <summary>
+            The icon displayed near the endpoint label
+            If this is null, no icon is displayed.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.Endpoint.Editor">
+            <summary>
+            The editor viewmodel associated with this endpoint. 
+            It can be used to configure the behaviour of this endpoint or provide a default value when there is no connection.
+            The editor, if not null, will be displayed in the node, under the endpoint name next to the port.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.Endpoint.Port">
+            <summary>
+            The viewmodel for the port of this endpoint. (the part the user can create connections from.)
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.Endpoint.PortPosition">
+            <summary>
+            Where should the port be positioned in the endpoint?
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.Endpoint.Connections">
+            <summary>
+            List of connections between this endpoint and other endpoints in the network.
+            To add a new connection, do not add it here but instead add it to the Connections property in the network.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.Endpoint.MaxConnections">
+            <summary>
+            The maximum amount of connections this endpoint accepts.
+            When Connections.Count == MaxConnections, the user cannot add more connections to this endpoint
+            until a connection is removed.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.Endpoint.Visibility">
+            <summary>
+            Visibility behaviour of this endpoint
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.Endpoint.SortIndex">
+            <summary>
+            Inputs and outputs are sorted by increasing values of SortIndex before being displayed.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.EndpointGroupViewModel.VisibleInputs">
+            <summary>
+            The list of inputs that is currently visible on this group.
+            Some inputs may be hidden if the node is collapsed.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.EndpointGroupViewModel.VisibleOutputs">
+            <summary>
+            The list of outputs that is currently visible on this group.
+            Some outputs may be hidden if the node is collapsed.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.EndpointGroupViewModel.Group">
+            <summary>
+            The endpoint group wrapping the name and the parent group of this group.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.EndpointGroupViewModel.Children">
+            <summary>
+            The list of nested endpoint groups.
+            </summary>
+        </member>
+        <member name="T:NodeNetwork.ViewModels.EndpointGroupViewModelFactory">
+            <summary>
+            The factory method to create endpoint view models. Used in NodeViewModel.
+            </summary>
+            <param name="group">The endpoint group this view model wraps.</param>
+            <param name="allInputs">All inputs of the group.</param>
+            <param name="allOutputs">All outputs of the group.</param>
+            <param name="children">Nested endpoint groups.</param>
+            <param name="endpointGroupViewModelFactory">The factory method used to create the nested endpoint group view models.</param>
+            <returns>The view model for the endpoint group.</returns>
+        </member>
+        <member name="T:NodeNetwork.ViewModels.ErrorMessageViewModel">
+            <summary>
+            A viewmodel for a simple error message.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.ErrorMessageViewModel.Message">
+            <summary>
+            The text to be displayed that explains the error.
+            </summary>
+        </member>
+        <member name="T:NodeNetwork.ViewModels.NetworkViewModel">
+            <summary>
+            The viewmodel for node networks.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NetworkViewModel.Nodes">
+            <summary>
+            The list of nodes in this network.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NetworkViewModel.SelectedNodes">
+            <summary>
+            A list of nodes that are currently selected in the UI.
+            The contents of this list is equal to the nodes in Nodes where the Selected property is true.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NetworkViewModel.Connections">
+            <summary>
+            The list of connections in this network.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NetworkViewModel.PendingConnection">
+            <summary>
+            The connection that is currently being build by the user.
+            This connection is visually displayed in the UI, but is not an actual functional connection.
+            This is used when the user drags from an endpoint to create a new connection.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NetworkViewModel.PendingNode">
+            <summary>
+            The viewmodel of the node that is not part of the network, but is displayed as a node that can be added.
+            This property is used to display a new node when the user drags a node viewmodel over the network view.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NetworkViewModel.ConnectionFactory">
+            <summary>
+            The function that is used to create connection viewmodels when the user creates connections in the network view.
+            By default, this function creates a ConnectionViewModel.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NetworkViewModel.Validator">
+            <summary>
+            Function that is used to check if the network is valid or not.
+            To run the validation, use the UpdateValidation command.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NetworkViewModel.LatestValidation">
+            <summary>
+            The validation of the current state of the network.
+            This property is automatically updated when UpdateValidation runs.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NetworkViewModel.Validation">
+            <summary>
+            Observable that produces the latest NetworkValidationResult every time the network is validated.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NetworkViewModel.IsReadOnly">
+            <summary>
+            If true, the network and its contents (nodes, connections, input/output editors, ...) cannot be modified by the user.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NetworkViewModel.CutLine">
+            <summary>
+            The viewmodel of the cutline used in this network view.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NetworkViewModel.ZoomFactor">
+            <summary>
+            Scale of the view. Larger means more zoomed in. Default value is 1.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NetworkViewModel.MaxZoomLevel">
+            <summary>
+            The maximum zoom level used in this network view. Default value is 2.5.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NetworkViewModel.MinZoomLevel">
+            <summary>
+            The minimum zoom level used in this network view. Default value is 0.15.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NetworkViewModel.DragOffset">
+            <summary>
+            The drag offset of the initial view position used in this network view. Default value is (0, 0).
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NetworkViewModel.SelectionRectangle">
+            <summary>
+            The viewmodel for the selection rectangle used in this network view.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NetworkViewModel.ConnectionsUpdated">
+            <summary>
+            This observable pushes a notification when a connection was added to/removed from the network,
+            and the relevant endpoints have been updated.
+            </summary>
+            <remarks>
+            Observing the Connections list directly will trigger the same notifications,
+            but before the endpoints have had a chance to update and so they may be in an invalid state.
+            </remarks>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NetworkViewModel.NetworkChanged">
+            <summary>
+            This observable pushes a notification whenever any functional changes are made to the network.
+            Purely esthetical changes, such as the collapsing of nodes, do not trigger this observable.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NetworkViewModel.DeleteSelectedNodes">
+            <summary>
+            Deletes the nodes in SelectedNodes that are user-removable.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NetworkViewModel.UpdateValidation">
+            <summary>
+            Runs the Validator function and stores the result in LatestValidation.
+            </summary>
+        </member>
+        <member name="M:NodeNetwork.ViewModels.NetworkViewModel.ClearSelection">
+            <summary>
+            Clears SelectedNodes, setting the IsSelected property of all the nodes to false.
+            </summary>
+        </member>
+        <member name="M:NodeNetwork.ViewModels.NetworkViewModel.StartCut">
+            <summary>
+            Starts a cut in the CutLine viewmodel.
+            </summary>
+        </member>
+        <member name="M:NodeNetwork.ViewModels.NetworkViewModel.FinishCut">
+            <summary>
+            Stops the current cut in the CutLine viewmodel and applies the changes.
+            </summary>
+        </member>
+        <member name="M:NodeNetwork.ViewModels.NetworkViewModel.RemovePendingConnection">
+            <summary>
+            Sets PendingConnection to null.
+            </summary>
+        </member>
+        <member name="M:NodeNetwork.ViewModels.NetworkViewModel.StartRectangleSelection">
+            <summary>
+            Starts a selection in RectangleSelection
+            </summary>
+        </member>
+        <member name="M:NodeNetwork.ViewModels.NetworkViewModel.FinishRectangleSelection">
+            <summary>
+            Stops the current selection in RectangleSelection and applies the changes.
+            </summary>
+        </member>
+        <member name="T:NodeNetwork.ViewModels.NodeEndpointEditorViewModel">
+            <summary>
+            The viewmodel for the editor component that is displayed next to a node endpoint.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NodeEndpointEditorViewModel.Parent">
+            <summary>
+            The endpoint that has this object as its editor.
+            </summary>
+        </member>
+        <member name="T:NodeNetwork.ViewModels.NodeInputViewModel">
+            <summary>
+            Viewmodel class for inputs on a node.
+            Inputs are endpoints that can only be connected to outputs.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NodeInputViewModel.IsEditorVisible">
+            <summary>
+            If true, the editor is visible. Otherwise, the editor is hidden.
+            See HideEditorIfConnected.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NodeInputViewModel.HideEditorIfConnected">
+            <summary>
+            If true, the editor of this input will be hidden if Connection is not null.
+            This makes sense if the editor is used to provide a value when no connection is present.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NodeInputViewModel.ConnectionValidator">
+            <summary>
+            This function is called when a new connection with this input is pending.
+            It decides whether or not the pending connection is valid.
+            If the validation result says the pending connection is invalid, 
+            then the user will not be able to add the connection to the network.
+            </summary>
+        </member>
+        <member name="M:NodeNetwork.ViewModels.NodeInputViewModel.CreatePendingConnection">
+            <summary>
+            Sets the pending connection in the network to a new connection with this endpoint as the input.
+            If this input already is connected, and MaxConnections == 1,
+            then the connection is replaced by a pending connection without this endpoint.
+            If the connection would be invalid, no pending connection is made.
+            Called when the user clicks on this endpoint.
+            </summary>
+        </member>
+        <member name="M:NodeNetwork.ViewModels.NodeInputViewModel.SetConnectionPreview(System.Boolean)">
+            <summary>
+            Sets this endpoint as the input of the pending connection and updates its validation.
+            Called when the user drags and holds a pending connection over this endpoint.
+            </summary>
+            <param name="previewActive">
+            True to set this endpoint as the output of the pending connection.
+            To remove this endpoint from the pending connection, set this to false.
+            </param>
+        </member>
+        <member name="M:NodeNetwork.ViewModels.NodeInputViewModel.FinishPendingConnection">
+            <summary>
+            Tries to create a new connection in the network based on the pending connection and this endpoint as the input.
+            If the connection would be invalid, no connection is made.
+            The pending connection is deleted.
+            Called when the user drags and releases a pending connection over this endpoint.
+            </summary>
+        </member>
+        <member name="T:NodeNetwork.ViewModels.NodeOutputViewModel">
+            <summary>
+            Viewmodel class for outputs on a node.
+            Outputs are endpoints that can only be connected to inputs.
+            </summary>
+        </member>
+        <member name="M:NodeNetwork.ViewModels.NodeOutputViewModel.CreatePendingConnection">
+            <summary>
+            Sets the pending connection in the network to a new connection with this endpoint as the output.
+            If the connection would be invalid, no pending connection is made.
+            Called when the user clicks on this endpoint.
+            </summary>
+        </member>
+        <member name="M:NodeNetwork.ViewModels.NodeOutputViewModel.SetConnectionPreview(System.Boolean)">
+            <summary>
+            Sets this endpoint as the output of the pending connection and updates its validation.
+            Called when the user drags and holds a pending connection over this endpoint.
+            </summary>
+            <param name="previewActive">
+            True to set this endpoint as the output of the pending connection.
+            To remove this endpoint from the pending connection, set this to false.
+            </param>
+        </member>
+        <member name="M:NodeNetwork.ViewModels.NodeOutputViewModel.FinishPendingConnection">
+            <summary>
+            Tries to create a new connection in the network based on the pending connection and this endpoint as the output.
+            If the connection would be invalid, no connection is made.
+            The pending connection is deleted.
+            Called when the user drags and releases a pending connection over this endpoint.
+            </summary>
+        </member>
+        <member name="T:NodeNetwork.ViewModels.NodeViewModel">
+            <summary>
+            Viewmodel class for the nodes in the network
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NodeViewModel.Parent">
+            <summary>
+            The network that contains this node
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NodeViewModel.Name">
+            <summary>
+            The name of the node.
+            In the default view, this string is displayed at the top of the node.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NodeViewModel.HeaderIcon">
+            <summary>
+            The icon displayed in the header of the node.
+            If this is null, no icon is displayed.
+            In the default view, this icon is displayed at the top of the node.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NodeViewModel.Inputs">
+            <summary>
+            The list of inputs on this node.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NodeViewModel.Outputs">
+            <summary>
+            The list of outputs on this node.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NodeViewModel.VisibleInputs">
+            <summary>
+            The list of inputs that is currently visible on this node.
+            Some inputs may be hidden if the node is collapsed.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NodeViewModel.VisibleOutputs">
+            <summary>
+            The list of outputs that is currently visible on this node.
+            Some outputs may be hidden if the node is collapsed.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NodeViewModel.VisibleEndpointGroups">
+            <summary>
+            The list of endpoint groups that is currently visible on this node.
+            Some groups may be hidden if the node is collapsed.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NodeViewModel.EndpointGroupViewModelFactory">
+            <summary>
+            The function that is used to create endpoint group view models.
+            By default, this function creates a EndpointGroupViewModel.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NodeViewModel.IsSelected">
+            <summary>
+            If true, this node is currently selected in the UI.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NodeViewModel.IsCollapsed">
+            <summary>
+            If true, this node is currently collapsed.
+            If the node is collapsed, some parts of the node are hidden to provide a more compact view.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NodeViewModel.CanBeRemovedByUser">
+            <summary>
+            If true, the user can delete this node from the network in the UI.
+            True by default.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NodeViewModel.Position">
+            <summary>
+            The position of this node in the network.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NodeViewModel.Size">
+            <summary>
+            The rendered size of this node.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.NodeViewModel.Resizable">
+            <summary>
+            On which axes can the user resize the node?
+            </summary>
+        </member>
+        <member name="T:NodeNetwork.ViewModels.PendingConnectionViewModel">
+            <summary>
+            Viewmodel for a connection that is currently being build by the user.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.PendingConnectionViewModel.Parent">
+            <summary>
+            The network viewmodel that this connection is being build in.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.PendingConnectionViewModel.Input">
+            <summary>
+            The node input viewmodel, if any, that is on one side of the connection.
+            Can be null.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.PendingConnectionViewModel.InputIsLocked">
+            <summary>
+            If true, Input will not be changed. 
+            This is used to mark Input as the starting point of the pending connection.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.PendingConnectionViewModel.Output">
+            <summary>
+            The node output viewmodel, if any, that is on one side of the connection.
+            Can be null.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.PendingConnectionViewModel.OutputIsLocked">
+            <summary>
+            If true, Output will not be changed. 
+            This is used to mark Output as the starting point of the pending connection.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.PendingConnectionViewModel.LooseEndPoint">
+            <summary>
+            The current coordinates of the point where the pending connection ends on the loose side.
+            This value is used when the Input or Output is null.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.PendingConnectionViewModel.BoundingBox">
+            <summary>
+            The rectangle that contains the entire connection view.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.PendingConnectionViewModel.Validation">
+            <summary>
+            The validation of the current connection state. 
+            If invalid, the connection will be displayed as such and an error message will be displayed.
+            The pending connection must be valid before it can be added to the network as a real connection.
+            </summary>
+        </member>
+        <member name="T:NodeNetwork.ViewModels.PortViewModel">
+            <summary>
+            Viewmodel class for the UI part of an endpoint that is used to create connections.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.PortViewModel.Parent">
+            <summary>
+            The Endpoint that owns this port.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.PortViewModel.CenterPoint">
+            <summary>
+            The coordinates, relative to the network, of the center of this port.
+            Used to draw connections.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.PortViewModel.IsMirrored">
+            <summary>
+            If true, the view for this viewmodel will be horizontally mirrored.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.PortViewModel.IsVisible">
+            <summary>
+            If true, this port is visible. If false, this port is hidden.
+            True by default.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.PortViewModel.IsHighlighted">
+            <summary>
+            If true, this port is highlighted.
+            This could be, for example, because the mouse is hovering over the port.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.PortViewModel.IsInErrorMode">
+            <summary>
+            If true, the port will visually indicate there is an error with this port.
+            In the default view this is used to indicate a pending connection validation error.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.PortViewModel.ConnectionDragStarted">
+            <summary>
+            Observable that fires when the user starts a new pending connection from this port.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.PortViewModel.ConnectionPreviewActive">
+            <summary>
+            Fires when a pending connection is dragged over this port.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.PortViewModel.ConnectionDragFinished">
+            <summary>
+            Fires when the user drops the pending connection on this port.
+            </summary>
+        </member>
+        <member name="T:NodeNetwork.ViewModels.SelectionRectangleViewModel">
+            <summary>
+            Viewmodel for the view that is used to select nodes by dragging a rectangle around them.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.SelectionRectangleViewModel.StartPoint">
+            <summary>
+            The coordinates of the first corner of the rectangle (where the user clicked down).
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.SelectionRectangleViewModel.EndPoint">
+            <summary>
+            The coordinates of the second corner of the rectangle.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.SelectionRectangleViewModel.Rectangle">
+            <summary>
+            The Rect object formed by StartPoint and EndPoint.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.SelectionRectangleViewModel.IsVisible">
+            <summary>
+            If true, the selection rectangle view is visible.
+            </summary>
+        </member>
+        <member name="P:NodeNetwork.ViewModels.SelectionRectangleViewModel.IntersectingNodes">
+            <summary>
+            List of nodes visually intersecting or contained in the rectangle.
+            This list is driven by the view.
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
+    </members>
+</doc>

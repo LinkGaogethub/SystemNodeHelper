@@ -1,0 +1,91 @@
+﻿<Window x:Class="SystemNodeHelper.View.SettingDraftingView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SystemNodeHelper.View"
+        mc:Ignorable="d"
+        Title="生成前的设置" Height="700" Width="800" WindowStartupLocation ="CenterScreen">
+    <Window.Resources>
+      
+        <Style TargetType="StackPanel">
+            <Style.Setters>
+                <Setter Property="Margin" Value="5"></Setter>
+            </Style.Setters>
+        </Style>
+        <Style TargetType="Button" x:Key="bottomBtn">
+            <Style.Setters>
+                <Setter Property="Width" Value="75"></Setter>
+                <Setter Property="Height" Value="25"></Setter>
+                <Setter Property="Margin" Value="5"></Setter>
+            </Style.Setters>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition Width="250"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <DockPanel>
+            <DockPanel  Margin="10" DockPanel.Dock="Top" >
+                <TextBlock Text="类别" VerticalAlignment="Center"></TextBlock>
+                <ComboBox Name="cotegotyComboBox" MinWidth="300" Margin="5">
+                  
+                </ComboBox>
+            </DockPanel>
+           
+            <ListView x:Name="listView" DockPanel.Dock="Bottom"  ItemsSource ="{Binding}" Margin="10" >
+                <ListView.View >
+                    <GridView >
+                        <GridViewColumn DisplayMemberBinding ="{Binding Path=ModelFamilyName}" Width ="150" Header ="族" />
+                        <GridViewColumn DisplayMemberBinding ="{Binding Path=ModelFamilySymbolName}" Width ="300" Header ="类别" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        
+         
+        </DockPanel>
+
+        <StackPanel Grid.Column="1" Margin="10">
+            <!--<TextBlock Text="选择要绑定的详图"></TextBlock>-->
+            <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="1" MinHeight="150"  Margin="5"  Width="225" Height="225">
+                <StackPanel>
+                    <TextBlock Text="预览"></TextBlock>
+                    <Image x:Name="previewFamilyImage" Width="200" Height="200"></Image>
+                </StackPanel>
+            </Border>
+
+            <GroupBox Header="前选类型绑定的详图" Margin=" 0 50 0 0" >
+                <StackPanel>
+                    <ComboBox x:Name="avaBindDraftingFamilyComboBox"  IsEnabled="False" Margin="5" Height="30"></ComboBox>
+                    <Button  x:Name="openPreviewDicBtn" Content="打开为预览图片加载的文件夹" Margin="5" Height="30"></Button>
+
+                    <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="1" MinHeight="150"  Margin="5" Width="225" Height="225">
+                        <StackPanel>
+                            <TextBlock Text="预览详图"></TextBlock>
+                            <Image x:Name="previewDraftingImage" Width="200" Height="200">
+                                <Image.RenderTransform>
+                                    <MatrixTransform Matrix="2 0 0 2 -100 -100"></MatrixTransform>
+                                </Image.RenderTransform>
+
+                            </Image>
+                        </StackPanel>
+                    </Border>
+
+                </StackPanel>
+            </GroupBox>
+          
+           
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="okBtn" Click="okBtn_Click" Content="保存并绘制" Style="{StaticResource bottomBtn}"></Button>
+            <Button x:Name="applyBtn"  Content="保存设置" Style="{StaticResource bottomBtn}"></Button>
+            <Button x:Name="cancelBtn" Click="cancelBtn_Click"  Content="取消" Style="{StaticResource bottomBtn}"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

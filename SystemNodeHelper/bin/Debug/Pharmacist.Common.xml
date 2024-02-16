@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Pharmacist.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Pharmacist.Common.SingleAwaitSubject`1">
+            <summary>
+            A subject which will have a single awaiter.
+            </summary>
+            <typeparam name="T">The type of signals given by the subject.</typeparam>
+        </member>
+        <member name="M:Pharmacist.Common.SingleAwaitSubject`1.GetAwaiter">
+            <summary>
+            Gets the awaiter based on the first item in the collection.
+            </summary>
+            <returns>The async subject awaiter.</returns>
+        </member>
+        <member name="M:Pharmacist.Common.SingleAwaitSubject`1.OnNext(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Pharmacist.Common.SingleAwaitSubject`1.OnError(System.Exception)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Pharmacist.Common.SingleAwaitSubject`1.OnCompleted">
+            <inheritdoc/>
+        </member>
+        <member name="M:Pharmacist.Common.SingleAwaitSubject`1.Subscribe(System.IObserver{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Pharmacist.Common.SingleAwaitSubject`1.Dispose">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

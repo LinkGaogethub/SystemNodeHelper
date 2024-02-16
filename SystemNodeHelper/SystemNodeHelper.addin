@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>SystemNodeHelper</Name>
+    <Assembly>SystemNodeHelper.dll</Assembly>
+    <AddInId>3063fa8f-0aed-4bcf-b42e-0e1c83ff6037</AddInId>
+    <FullClassName>SystemNodeHelper.RevitCommandEventHandel.RevitApplication</FullClassName>
+    <VendorId>LinkGao</VendorId>
+    
+    <VendorDescription>932906942@qq.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>

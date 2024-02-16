@@ -508,7 +508,7 @@ namespace SystemNodeHelper.ViewModel
             {
                 if (_currentNodeSystem == null)
                 {
-                    MessageBox.Show("要新建一个", "错误!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("要新建一个或者选选择画板", "错误!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
                 var activeDoc = uiapp.ActiveUIDocument;
@@ -526,6 +526,7 @@ namespace SystemNodeHelper.ViewModel
                 }
                 if (selElements.Size != 1)
                 {
+                    MessageBox.Show("先选一个系统", "错误!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     //  message = "Please select ONLY one element from current project.";
                     return;
                 }

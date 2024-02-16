@@ -1,0 +1,29 @@
+C:\ProgramData\Autodesk\ApplicationPlugins\SystemNodeHelper.bundle\Contents\2019\SystemNodeHelper.dll.config
+C:\ProgramData\Autodesk\ApplicationPlugins\SystemNodeHelper.bundle\Contents\2019\SystemNodeHelper.dll
+C:\ProgramData\Autodesk\ApplicationPlugins\SystemNodeHelper.bundle\Contents\2019\SystemNodeHelper.pdb
+F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj\Release\SystemNodeHelper.csproj.AssemblyReference.cache
+F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj\Release\App.g.cs
+F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj\Release\MainWindow.g.cs
+F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj\Release\View\ColorNodeView.g.cs
+F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj\Release\View\MainDockablePane.g.cs
+F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj\Release\View\MainDockablePaneControl.g.cs
+F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj\Release\View\SaveNetworkView.g.cs
+F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj\Release\View\SettingDraftingView.g.cs
+F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj\Release\GeneratedInternalTypeHelper.g.cs
+F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj\Release\SystemNodeHelper_MarkupCompile.cache
+F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj\Release\SystemNodeHelper_MarkupCompile.lref
+F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj\Release\App.baml
+F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj\Release\MainWindow.baml
+F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj\Release\View\ColorNodeView.baml
+F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj\Release\View\MainDockablePane.baml
+F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj\Release\View\MainDockablePaneControl.baml
+F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj\Release\View\SaveNetworkView.baml
+F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj\Release\View\SettingDraftingView.baml
+F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj\Release\SystemNodeHelper.g.resources
+F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj\Release\SystemNodeHelper.Properties.Resources.resources
+F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj\Release\SystemNodeHelper.csproj.GenerateResource.cache
+F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj\Release\SystemNodeHelper.csproj.CoreCompileInputs.cache
+F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj\Release\SystemNodeHelper.csproj.CopyComplete
+F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj\Release\SystemNodeHelper.dll
+F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj\Release\SystemNodeHelper.pdb
+C:\ProgramData\Autodesk\ApplicationPlugins\SystemNodeHelper.bundle\Contents\2019\SystemNodeHelper.addin

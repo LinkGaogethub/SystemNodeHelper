@@ -17,7 +17,7 @@
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -27,10 +27,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>C:\ProgramData\Autodesk\ApplicationPlugins\SystemNodeHelper.bundle\Contents\2019\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -223,6 +223,9 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="SystemNodeHelper.addin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -261,12 +264,12 @@
     <Resource Include="Resources\img\CreateDrafting.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\NodeNetwork-master\NodeNetworkToolkit\NodeNetworkToolkit.csproj">
-      <Project>{e4f8f406-b3b4-4659-95f0-ac6a1180a158}</Project>
+    <ProjectReference Include="..\NodeNetworkToolkit\NodeNetworkToolkit.csproj">
+      <Project>{495b1a77-1671-4d7c-8585-3f68fa25e5cc}</Project>
       <Name>NodeNetworkToolkit</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\NodeNetwork-master\NodeNetwork\NodeNetwork.csproj">
-      <Project>{c5baaced-4d7c-47c5-84a2-f181103c7ec4}</Project>
+    <ProjectReference Include="..\NodeNetwork\NodeNetwork.csproj">
+      <Project>{98ba4820-6ed3-46a5-b7f7-df2b384aa377}</Project>
       <Name>NodeNetwork</Name>
     </ProjectReference>
   </ItemGroup>

@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>NodeNetwork</id>
+    <version>6.0.0</version>
+    <authors>Wouter De Keersmaecker</authors>
+    <license type="expression">Apache-2.0</license>
+    <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
+    <iconUrl>https://raw.githubusercontent.com/Wouterdek/NodeNetwork/gh-pages/img/logo.png</iconUrl>
+    <description>Package Description</description>
+    <tags>wpf reactiveui node network editor node-editor graph</tags>
+    <repository type="Github" url="https://www.github.com/wouterdek/nodenetwork" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.7.2">
+        <dependency id="Microsoft.CSharp" version="4.7.0" exclude="Build,Analyzers" />
+        <dependency id="ReactiveUI" version="13.2.18" exclude="Build,Analyzers" />
+        <dependency id="ReactiveUI.Events.WPF" version="13.2.18" exclude="Build,Analyzers" />
+        <dependency id="ReactiveUI.WPF" version="13.2.18" exclude="Build,Analyzers" />
+        <dependency id="Splat.Drawing" version="11.0.1" exclude="Build,Analyzers" />
+        <dependency id="System.Buffers" version="4.5.1" exclude="Build,Analyzers" />
+        <dependency id="System.Collections.Immutable" version="5.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Data.DataSetExtensions" version="4.5.0" exclude="Build,Analyzers" />
+        <dependency id="System.Drawing.Primitives" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Memory" version="4.5.4" exclude="Build,Analyzers" />
+        <dependency id="System.Numerics.Vectors" version="4.5.0" exclude="Build,Analyzers" />
+        <dependency id="System.Runtime.CompilerServices.Unsafe" version="5.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.Tasks.Extensions" version="4.5.4" exclude="Build,Analyzers" />
+        <dependency id="System.ValueTuple" version="4.5.0" exclude="Build,Analyzers" />
+        <dependency id="log4net" version="2.0.12" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETCoreApp3.1">
+        <dependency id="Microsoft.CSharp" version="4.7.0" exclude="Build,Analyzers" />
+        <dependency id="ReactiveUI" version="13.2.18" exclude="Build,Analyzers" />
+        <dependency id="ReactiveUI.Events.WPF" version="13.2.18" exclude="Build,Analyzers" />
+        <dependency id="ReactiveUI.WPF" version="13.2.18" exclude="Build,Analyzers" />
+        <dependency id="Splat.Drawing" version="11.0.1" exclude="Build,Analyzers" />
+        <dependency id="System.Buffers" version="4.5.1" exclude="Build,Analyzers" />
+        <dependency id="System.Collections.Immutable" version="5.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Data.DataSetExtensions" version="4.5.0" exclude="Build,Analyzers" />
+        <dependency id="System.Drawing.Primitives" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Memory" version="4.5.4" exclude="Build,Analyzers" />
+        <dependency id="System.Numerics.Vectors" version="4.5.0" exclude="Build,Analyzers" />
+        <dependency id="System.Runtime.CompilerServices.Unsafe" version="5.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.Tasks.Extensions" version="4.5.4" exclude="Build,Analyzers" />
+        <dependency id="System.ValueTuple" version="4.5.0" exclude="Build,Analyzers" />
+        <dependency id="log4net" version="2.0.12" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework=".NETCoreApp3.1">
+        <frameworkReference name="Microsoft.WindowsDesktop.App" />
+        <frameworkReference name="Microsoft.WindowsDesktop.App.WPF" />
+      </group>
+      <group targetFramework=".NETFramework4.7.2" />
+    </frameworkReferences>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="PresentationFramework.Aero" targetFramework=".NETFramework4.7.2" />
+      <frameworkAssembly assemblyName="System.Drawing.Primitives" targetFramework=".NETFramework4.7.2" />
+      <frameworkAssembly assemblyName="System.Windows" targetFramework=".NETFramework4.7.2" />
+    </frameworkAssemblies>
+  </metadata>
+  <files>
+    <file src="F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\NodeNetwork\bin\Debug\net472\NodeNetwork.dll" target="lib\net472\NodeNetwork.dll" />
+    <file src="F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\NodeNetwork\bin\Debug\netcoreapp3.1\NodeNetwork.dll" target="lib\netcoreapp3.1\NodeNetwork.dll" />
+  </files>
+</package>

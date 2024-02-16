@@ -107,8 +107,8 @@ F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\bin
 F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\bin\Debug\ru-RU\AdWindows.resources.dll
 F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\bin\Debug\zh-CN\AdWindows.resources.dll
 F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\bin\Debug\zh-TW\AdWindows.resources.dll
-C:\ProgramData\Autodesk\ApplicationPlugins\SystemNodeHelper.bundle\Contents\2019\SystemNodeHelper.dll
 C:\ProgramData\Autodesk\ApplicationPlugins\SystemNodeHelper.bundle\Contents\2019\SystemNodeHelper.dll.config
+C:\ProgramData\Autodesk\ApplicationPlugins\SystemNodeHelper.bundle\Contents\2019\SystemNodeHelper.dll
 C:\ProgramData\Autodesk\ApplicationPlugins\SystemNodeHelper.bundle\Contents\2019\SystemNodeHelper.pdb
 F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj\Debug\SystemNodeHelper.csproj.AssemblyReference.cache
 F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj\Debug\App.g.cs
@@ -135,3 +135,4 @@ F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj
 F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj\Debug\SystemNodeHelper.csproj.CopyComplete
 F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj\Debug\SystemNodeHelper.dll
 F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\SystemNodeHelper\obj\Debug\SystemNodeHelper.pdb
+C:\ProgramData\Autodesk\ApplicationPlugins\SystemNodeHelper.bundle\Contents\2019\SystemNodeHelper.addin

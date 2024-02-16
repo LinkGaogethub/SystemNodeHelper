@@ -1,0 +1,20 @@
+﻿NodeNetwork
+
+
+library
+C#
+.cs
+F:\2.dev\4. revitSysTopu\SystemNodeHelper3\SystemNodeHelper\NodeNetwork\obj\Release\netcoreapp3.1\
+NodeNetwork
+none
+false
+TRACE;RELEASE;NETCOREAPP;NETCOREAPP3_1;
+
+14-663422403
+
+37-39638403
+208879025486
+Themes\ConnectionView.xaml;Themes\Endpoint.xaml;Themes\EndpointGroupView.xaml;Themes\ErrorMessageView.xaml;Themes\Generic.xaml;Themes\NodeEndpointEditorView.xaml;Themes\NodeInputView.xaml;Themes\NodeOutputView.xaml;Themes\NodeView.xaml;Themes\PendingConnectionView.xaml;Themes\PortView.xaml;Views\Controls\ArrowToggleButton.xaml;Views\Controls\ViewModelViewHostNoAnimations.xaml;Views\NetworkView.xaml;
+
+False
+

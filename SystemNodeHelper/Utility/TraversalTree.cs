@@ -17,6 +17,7 @@ using System.Xml.Linq;
 using SystemNodeHelper.RevitCommandEventHandel;
 using SystemNodeHelper.View;
 using SystemNodeHelper.ViewModel;
+using static SystemNodeHelper.Utility.Keyboard;
 
 namespace SystemNodeHelper.Utility
 {
@@ -279,7 +280,15 @@ namespace SystemNodeHelper.Utility
                 var treeNode = sender as TreeNode;
                 if (IsSelected)
                 {
-                    RevitApplication.SelectionElementstExternalEvent.ElementIds.Add(treeNode.ElementId);
+                    if (Keyboard.IsKeyPressed(VirtualKeyStates.VK_SHIFT) || Keyboard.IsKeyPressed(VirtualKeyStates.VK_CONTROL))
+                    {
+
+                        RevitApplication.SelectionElementstExternalEvent.ElementIds.Add(treeNode.ElementId);
+                    }
+                    else {
+                        RevitApplication.SelectionElementstExternalEvent.ElementIds.Clear();
+                        RevitApplication.SelectionElementstExternalEvent.ElementIds.Add(treeNode.ElementId);
+                    }
                 }
                 else
                 {
@@ -289,7 +298,10 @@ namespace SystemNodeHelper.Utility
                 RevitApplication.SelectionElements.Raise();
             }
 
+
+
         }
+
 
         /// <summary>
         /// Get Element by its Id

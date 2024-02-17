@@ -21,6 +21,7 @@ using System.Linq;
 using System.Reactive;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
+using System.Web.UI.WebControls;
 using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Markup;
@@ -33,6 +34,7 @@ using SystemNodeHelper.Utility;
 using SystemNodeHelper.View;
 using static System.Resources.ResXFileRef;
 using TreeNode = SystemNodeHelper.Utility.TreeNode;
+using Unit = System.Reactive.Unit;
 
 namespace SystemNodeHelper.ViewModel
 {
@@ -453,6 +455,8 @@ namespace SystemNodeHelper.ViewModel
             {
               //  SaveCurrentNodeCommand(app);
                 _network.Nodes.Clear();
+                _network.ZoomFactor = 1;
+                _network.DragOffset = new System.Windows.Point(0,0);
                 var doc = app.ActiveUIDocument.Document;
                 var networkListString = ExtendedDataUtil.ReadExtendedData(doc);
                 if (networkListString != null) {
@@ -540,9 +544,9 @@ namespace SystemNodeHelper.ViewModel
                 }
 
 
-
+                MessageBox.Show("选择一个元素作为起始节点", "继续", MessageBoxButtons.OK);
                 FocusToRevit(uiapp);
-      
+             
                 var reference = activeDoc.Selection.PickObject(ObjectType.Element, "请选择模型构件");
                 var selectedElement = activeDoc.Document.GetElement(reference);
                 // Get the expected mechanical or piping system from selected element
@@ -782,40 +786,66 @@ namespace SystemNodeHelper.ViewModel
                     fatherNode.Position = position;
                     _network.Nodes.Add(fatherNode);
                 }
-                if (fatherNode.Outputs.Count == 0)
-                {
-                    var output = new NodeOuputUnchange();
-                    output.Name = "Connector";
-                    fatherNode.Outputs.Add(output);
-                }
+          
 
                 for (int i = 0; i < chs.Count(); i++)
                 {
-                    var nude = chs[i];
-                    nude.TreeNodeParent = fatherNode;
+                    var node = chs[i];
+                    node.TreeNodeParent = fatherNode;
+                   // fatherNode.ChildNodes.Add(node);// todo test
                     if (fatherNode.ChildNodes.Count > 0)
                     {
                         var endCh = _network.Nodes.Items.OrderByDescending(x => x.Position.Y).First();
-                        nude.Position = new System.Windows.Point(endCh.Position.X, endCh.Position.Y + (i + 1) * _YOffset);
+                        node.Position = new System.Windows.Point(endCh.Position.X, endCh.Position.Y + (i + 1) * _YOffset);
 
                     }
                     else
                     {
                         //nude.Position = new System.Windows.Point(fatherNode.Position.X + _XOffset, fatherNode.Position.Y + (i + 1) * _YOffset - chs.Count() * _YOffset / 2);
-                        nude.Position = new System.Windows.Point(fatherNode.Position.X + _XOffset, fatherNode.Position.Y + i * _YOffset);
+                        node.Position = new System.Windows.Point(fatherNode.Position.X + _XOffset, fatherNode.Position.Y + i * _YOffset);
                     }
                 }
                 //networkView.Nodes.Items.Any(x => x.id);
                 _network.Nodes.AddRange(chs);
+                var orginCount = fatherNode.ChildNodes.Count;
                 fatherNode.ChildNodes.AddRange(chs);
 
-                foreach (var ch in chs)
+
+             
+                for (int i = 0; i < fatherNode.ChildNodes.Count ; i++)
                 {
-                    var connection = new ConnectionViewModel(this._network, ch.Inputs.Items.ToArray()[0], fatherNode.Outputs.Items.ToArray()[0]);
-                    this._network.Connections.Add(connection);
+                    if (i < orginCount) continue;
+                    var output = new NodeOuputUnchange();
+                    output.Name = "Connector" + ( i + 1);
+                    fatherNode.Outputs.Add(output);
                 }
 
-                SyncShowNode(eleFather.Id.IntegerValue);
+       
+                for (int i = 0; i < fatherNode.ChildNodes.Count; i++)
+                {
+                    if (i < orginCount) continue;
+                    var ch = fatherNode.ChildNodes[i ];
+                    var connection = new ConnectionViewModel(this._network, ch.Inputs.Items.ToArray()[0], fatherNode.Outputs.Items.ToArray()[i ]);
+                    this._network.Connections.Add(connection);
+                }
+                //for (int i = 0; i < fatherNode.ChildNodes.Count; i++)
+                //{
+                //    var j =  i;
+                //    if (orginCount > 0)
+                //    {
+                //        j = i + orginCount - 1;
+                //    }
+                 
+                //    var output = new NodeOuputUnchange();
+                //    output.Name = "Connector" + (j);
+                //    fatherNode.Outputs.Add(output);
+                //    if (orginCount == 0) j++;
+                //    var ch = fatherNode.ChildNodes[j];
+                //    var connection = new ConnectionViewModel(this._network, ch.Inputs.Items.ToArray()[0], fatherNode.Outputs.Items.ToArray()[j]);
+                //    this._network.Connections.Add(connection);
+                //}
+
+               // SyncShowNode(eleFather.Id.IntegerValue ,false);
 
                 List<TreeNode> AddChildNode(List<Element> elements, System.Windows.Point fatherPint)
                 {
@@ -999,7 +1029,7 @@ namespace SystemNodeHelper.ViewModel
             }
         }
 
-        private void SyncShowNode(int eleIntegerValue)
+        private void SyncShowNode(int eleIntegerValue,bool isSelected = true)
         {
             foreach (TreeNode treeNode in _network.Nodes.Items)
             {
@@ -1008,7 +1038,7 @@ namespace SystemNodeHelper.ViewModel
                     _network.ZoomFactor = 1;
 
                     _network.DragOffset = new System.Windows.Point(-treeNode.Position.X + NetworkViewportRegion.Width / 2 + 50, -treeNode.Position.Y + NetworkViewportRegion.Height / 2 + 50);
-                    treeNode.IsSelected = true;
+                    treeNode.IsSelected = isSelected;
                     break;
                 }
             }

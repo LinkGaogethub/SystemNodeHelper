@@ -139,6 +139,7 @@
     <Compile Include="RevitCommandEventHandel\ShowPaneCommand.cs" />
     <Compile Include="Utility\ExtendedDataUtil.cs" />
     <Compile Include="Utility\ImgHelper.cs" />
+    <Compile Include="Utility\Keyboard.cs" />
     <Compile Include="Utility\NetworkConverter.cs" />
     <Compile Include="Utility\NodeInputUnchange.cs" />
     <Compile Include="Utility\NodeOuputUnchange.cs" />

@@ -60,7 +60,7 @@ namespace SystemNodeHelper.RevitCommandEventHandel
             SelectionElements = ExternalEvent.Create(SelectionElementstExternalEvent);
 
             var title = "系统助手";
-            app.CreateRibbonTab(title);
+            //app.CreateRibbonTab(title);
             var commandName = typeof(ShowPaneCommand).FullName;
 
             RibbonPanel rvtRibbonPanel = app.CreateRibbonPanel(title);

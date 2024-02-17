@@ -59,11 +59,11 @@ namespace SystemNodeHelper.RevitCommandEventHandel
             SelectionElementstExternalEvent = new SelectionElementstExternalEvent();
             SelectionElements = ExternalEvent.Create(SelectionElementstExternalEvent);
 
-            var title = "SystemNodeHelper";
+            var title = "系统助手";
             app.CreateRibbonTab(title);
             var commandName = typeof(ShowPaneCommand).FullName;
 
-            RibbonPanel rvtRibbonPanel = app.CreateRibbonPanel(title, title);
+            RibbonPanel rvtRibbonPanel = app.CreateRibbonPanel(title);
 
             PushButtonData data = new PushButtonData(title, title, AssemblyPath, commandName);
             RibbonItem item = rvtRibbonPanel.AddItem(data);

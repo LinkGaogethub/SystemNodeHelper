@@ -16,5 +16,5 @@ TRACE;RELEASE;NETCOREAPP;NETCOREAPP3_1;
 209-1917372871
 BreadcrumbBar\BreadcrumbBarView.xaml;ContextMenu\SearchableContextMenuView.xaml;Group\AddEndpointDropPanel\AddEndpointDropPanelView.xaml;NodeList\NodeListView.xaml;
 
-False
+True
 
